@@ -10,113 +10,396 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --brand: #7B61FF;
+            --brand-2: #00B4D8;
+            --ink: #1A2238;
+            --muted: #6c757d;
+            --bg: #f8f9fa;
+        }
+
+        body {
+            background: var(--bg);
+            color: #1b1f24;
+        }
+
+        .brand-gradient {
+            background: radial-gradient(1200px 600px at 10% 10%, rgba(123, 97, 255, .15), transparent 60%),
+                radial-gradient(900px 500px at 90% 20%, rgba(0, 180, 216, .12), transparent 60%);
+        }
+
+        .hero {
+            background: linear-gradient(180deg, #fff 0%, #f6f7ff 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, .05);
+        }
+
+        .badge-soft {
+            background: rgba(123, 97, 255, .1);
+            color: var(--brand);
+        }
+
+        .section-title .bar {
+            width: 64px;
+            height: 4px;
+            background: var(--brand);
+            border-radius: 99px;
+            margin: 12px auto 0;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 .75rem 2rem rgba(0, 0, 0, .08);
+            transition: .25s ease;
+        }
+
+        .icon-xxl {
+            font-size: 48px;
+            line-height: 1;
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .filter-btns .btn {
+            border-radius: 999px;
+        }
+
+        .timeline {
+            border-left: 2px solid #e9ecef;
+            padding-left: 1rem;
+        }
+
+        .timeline .item {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .timeline .item::before {
+            content: "";
+            position: absolute;
+            left: -10px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background: var(--brand);
+            border-radius: 50%;
+        }
+
+        .stat {
+            border: 1px solid rgba(0, 0, 0, .06);
+            border-radius: .75rem;
+            padding: 1.25rem;
+            background: #fff;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, .65);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, .6);
+        }
+
+        .footer-link {
+            color: #adb5bd;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+    </style>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+<body class="brand-gradient">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-braces-asterisk text-primary"></i> InnovaWeb
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <div id="navMain" class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portafolio">Portafolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#cotizarCanvas">
+                            Solicitar cotización
+                        </button>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
+                    <li class="nav-item ms-lg-2">
+                        <button class="btn btn-outline-secondary" data-bs-toggle="modal"
+                            data-bs-target="#loginClientes">
+                            Área de clientes
+                        </button>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
         </div>
     </nav>
 
     <br><br><br>
 
-    <div class="container">
-        <div class="row">
-            <div class="col order-last">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's
-                            content.</p>
+    <!-- HERO -->
+    <header class="hero">
+        <div class="container py-5">
+            <div class="row align-items-center gy-4">
+                <div class="col-lg-6">
+                    <span class="badge badge-soft mb-3">Soluciones digitales a tu medida</span>
+                    <h1 class="display-5 fw-bold">
+                        Creamos <span class="text-primary">sitios y apps</span> que impulsan tu negocio
+                    </h1>
+                    <p class="lead text-muted mt-3">
+                        Desarrollo web, e-commerce, integraciones y UX/UI. Entregas claras, métricas reales y soporte
+                        continuo.
+                    </p>
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="#portafolio" class="btn btn-primary">
+                            Ver portafolio <i class="bi bi-arrow-right-short"></i>
+                        </a>
+                        <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#simuladorModal">
+                            Simular presupuesto
+                        </button>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                    <div class="row mt-4 g-3">
+                        <div class="col-6 col-md-4">
+                            <div class="stat text-center">
+                                <div class="h3 mb-0">+7</div>
+                                <small class="text-muted">Años de experiencia</small>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="stat text-center">
+                                <div class="h3 mb-0">120</div>
+                                <small class="text-muted">Proyectos entregados</small>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="stat text-center">
+                                <div class="h3 mb-0">98%</div>
+                                <small class="text-muted">Satisfacción</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="p-4 glass rounded-3">
+                        <!-- Mockup simple -->
+                        <svg width="100%" height="320" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="20" y="20" width="760" height="410" rx="16" fill="#ffffff" stroke="#e9ecef" />
+                            <rect x="40" y="50" width="720" height="40" rx="8" fill="#e9ecef" />
+                            <rect x="40" y="110" width="220" height="260" rx="8" fill="#f1f3f5" />
+                            <rect x="280" y="110" width="480" height="120" rx="8" fill="#f8f9fa" />
+                            <rect x="280" y="240" width="480" height="130" rx="8" fill="#f8f9fa" />
+                        </svg>
+                    </div>
+                    <div class="text-muted small mt-2">Mockup ilustrativo de dashboard</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <br><br><br>
+
+    <!-- LOGOS / PARTNERS -->
+    <section class="py-4 bg-white">
+        <div class="container text-center">
+            <div class="row g-4 align-items-center justify-content-center">
+                <div class="col-6 col-md-2 text-muted"><i class="bi bi-award"></i> ISO-ready</div>
+                <div class="col-6 col-md-2 text-muted"><i class="bi bi-cloud-check"></i> Cloud</div>
+                <div class="col-6 col-md-2 text-muted"><i class="bi bi-shield-lock"></i> Seguridad</div>
+                <div class="col-6 col-md-2 text-muted"><i class="bi bi-graph-up"></i> Analytics</div>
+                <div class="col-6 col-md-2 text-muted"><i class="bi bi-phone"></i> Mobile-first</div>
+            </div>
+        </div>
+    </section>
+
+    <br><br><br>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="py-6 py-md-7">
+        <div class="container">
+            <div class="text-center section-title">
+                <h2 class="fw-bold">Servicios</h2>
+                <p class="text-muted">Todo lo que tu empresa necesita para crecer digitalmente</p>
+                <div class="bar"></div>
+            </div>
+
+            <div class="row g-4 mt-1">
+                <!-- Servicio 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-hover h-100">
+                        <div class="card-body">
+                            <i class="bi bi-window icon-xxl text-primary"></i>
+                            <h5 class="mt-3">Desarrollo Web Personalizado</h5>
+                            <p class="text-muted">Sitios corporativos, intranets y sistemas a medida con stacks
+                                modernos.</p>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                data-bs-target="#serv1">Ver más</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Servicio 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-hover h-100">
+                        <div class="card-body">
+                            <i class="bi bi-bag icon-xxl text-primary"></i>
+                            <h5 class="mt-3">E-commerce</h5>
+                            <p class="text-muted">Tiendas en línea con catálogos, pasarelas de pago y logística
+                                integrada.</p>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                data-bs-target="#serv2">Ver más</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Servicio 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-hover h-100">
+                        <div class="card-body">
+                            <i class="bi bi-phone icon-xxl text-primary"></i>
+                            <h5 class="mt-3">Aplicaciones Móviles</h5>
+                            <p class="text-muted">PWA/iOS/Android con desempeño óptimo y diseño nativo.</p>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                data-bs-target="#serv3">Ver más</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Servicio 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-hover h-100">
+                        <div class="card-body">
+                            <i class="bi bi-bezier icon-xxl text-primary"></i>
+                            <h5 class="mt-3">UX/UI Design</h5>
+                            <p class="text-muted">Investigación, wireframes, prototipos y sistemas de diseño escalables.
+                            </p>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                data-bs-target="#serv4">Ver más</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Servicio 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-hover h-100">
+                        <div class="card-body">
+                            <i class="bi bi-hdd-network icon-xxl text-primary"></i>
+                            <h5 class="mt-3">Integraciones & APIs</h5>
+                            <p class="text-muted">Conecta ERP/CRM, pasarelas, y microservicios de forma segura.</p>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                data-bs-target="#serv5">Ver más</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Servicio 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-hover h-100">
+                        <div class="card-body">
+                            <i class="bi bi-wrench-adjustable-circle icon-xxl text-primary"></i>
+                            <h5 class="mt-3">Mantenimiento & Hosting</h5>
+                            <p class="text-muted">Monitoreo, backups, seguridad y alta disponibilidad en la nube.</p>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                data-bs-target="#serv6">Ver más</button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's
-                            content.</p>
-                    </div>
+        </div>
+    </section>
+
+    <br><br><br>
+
+    <!-- MODALES SERVICIOS -->
+    <div class="modal fade" id="serv1" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Desarrollo Web Personalizado</h5><button class="btn-close"
+                        data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item">Sitios corporativos y landing pages</li>
+                        <li class="list-group-item">Sistemas internos y portales de clientes</li>
+                        <li class="list-group-item">SSR/SSG con SEO técnico</li>
                     </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
                 </div>
             </div>
-            <div class="col order-first">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's
-                            content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="serv2" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">E-commerce</h5><button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Catálogo, checkout, pagos, inventarios y reportes. Integración con logística y facturación
+                        electrónica.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="serv3" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Aplicaciones Móviles</h5><button class="btn-close"
+                        data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>PWA y apps nativas con notificaciones, offline-first y analítica integrada.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="serv4" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">UX/UI Design</h5><button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Descubrimiento, prototipos, pruebas con usuarios y Design System reutilizable.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="serv5" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Integraciones & APIs</h5><button class="btn-close"
+                        data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Conectamos plataformas (ERP/CRM/BI) con APIs seguras y escalables.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="serv6" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Mantenimiento & Hosting</h5><button class="btn-close"
+                        data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>SLAs, monitoreo, backups automáticos, parches de seguridad y soporte 24/7.</p>
                 </div>
             </div>
         </div>
@@ -124,93 +407,622 @@
 
     <br><br><br>
 
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <!-- Espacio para centrar-->
+    <!-- PORTAFOLIO con Filtros -->
+    <section id="portafolio" class="py-6">
+        <div class="container">
+            <div class="text-center section-title">
+                <h2 class="fw-bold">Portafolio</h2>
+                <p class="text-muted">Casos reales por tipo de proyecto</p>
+                <div class="bar"></div>
             </div>
-            <div class="col-8">
-                <div class="accordion" id="accordionExample" style="border-left: 25px; border-right: 25px;">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Accordion Item #1
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>This is the first item's accordion body.</strong> It is shown by default, until
-                                the collapse
-                                plugin adds the appropriate classes that we use to style each element. These classes
-                                control the
-                                overall appearance, as well as the showing and hiding via CSS transitions. You can
-                                modify any of
-                                this with custom CSS or overriding our default variables. It's also worth noting that
-                                just about any
-                                HTML can go within the <code>.accordion-body</code>, though the transition does limit
-                                overflow.
+
+            <div class="text-center my-3 filter-btns">
+                <div class="btn-group" role="group" aria-label="Filtros">
+                    <button class="btn btn-outline-secondary active" data-filter="all">Todos</button>
+                    <button class="btn btn-outline-secondary" data-filter="web">Web</button>
+                    <button class="btn btn-outline-secondary" data-filter="mobile">Móvil</button>
+                    <button class="btn btn-outline-secondary" data-filter="ecom">E-commerce</button>
+                    <button class="btn btn-outline-secondary" data-filter="saas">SaaS</button>
+                </div>
+            </div>
+
+            <div class="row g-4 portfolio-grid">
+                <!-- Item -->
+                <div class="col-sm-6 col-lg-4" data-cat="web">
+                    <div class="card h-100 card-hover">
+                        <img class="card-img-top" alt="Proyecto 1"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23e9ecef'/%3E%3C/svg%3E">
+                        <div class="card-body">
+                            <h6>Portal Corporativo</h6>
+                            <p class="text-muted small mb-0">Next.js · SSR · SEO</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4" data-cat="ecom">
+                    <div class="card h-100 card-hover">
+                        <img class="card-img-top" alt="Proyecto 2"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23e9ecef'/%3E%3C/svg%3E">
+                        <div class="card-body">
+                            <h6>Tienda de Moda</h6>
+                            <p class="text-muted small mb-0">Checkout · Pasarela · Analytics</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4" data-cat="mobile">
+                    <div class="card h-100 card-hover">
+                        <img class="card-img-top" alt="Proyecto 3"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23e9ecef'/%3E%3C/svg%3E">
+                        <div class="card-body">
+                            <h6>App de Pedidos</h6>
+                            <p class="text-muted small mb-0">PWA · Offline · Push</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4" data-cat="saas">
+                    <div class="card h-100 card-hover">
+                        <img class="card-img-top" alt="Proyecto 4"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23e9ecef'/%3E%3C/svg%3E">
+                        <div class="card-body">
+                            <h6>Dashboard Analítico</h6>
+                            <p class="text-muted small mb-0">SaaS · Multi-tenant · BI</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4" data-cat="web">
+                    <div class="card h-100 card-hover">
+                        <img class="card-img-top" alt="Proyecto 5"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23e9ecef'/%3E%3C/svg%3E">
+                        <div class="card-body">
+                            <h6>Intranet RH</h6>
+                            <p class="text-muted small mb-0">Auth · Roles · Notificaciones</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4" data-cat="ecom">
+                    <div class="card h-100 card-hover">
+                        <img class="card-img-top" alt="Proyecto 6"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23e9ecef'/%3E%3C/svg%3E">
+                        <div class="card-body">
+                            <h6>Marketplace B2B</h6>
+                            <p class="text-muted small mb-0">Catálogos dinámicos · API</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <br><br><br>
+
+    <!-- TESTIMONIOS (Carousel) -->
+    <section class="py-6 bg-white">
+        <div class="container">
+            <div class="text-center section-title">
+                <h2 class="fw-bold">Testimonios</h2>
+                <p class="text-muted">Lo que dicen nuestros clientes</p>
+                <div class="bar"></div>
+            </div>
+            <div id="testimonios" class="carousel slide mt-4" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <img class="avatar"
+                                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Crect width='48' height='48' fill='%23dee2e6'/%3E%3C/svg%3E"
+                                                alt="Cliente">
+                                            <div>
+                                                <strong>María Gómez</strong><br>
+                                                <small class="text-muted">CMO, RetailCo</small>
+                                            </div>
+                                        </div>
+                                        <p class="mb-0 mt-3">“Incrementamos 35% las conversiones tras el rediseño del
+                                            e-commerce.”</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Accordion Item #2
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>This is the second item's accordion body.</strong> It is hidden by default,
-                                until the
-                                collapse plugin adds the appropriate classes that we use to style each element. These
-                                classes
-                                control the overall appearance, as well as the showing and hiding via CSS transitions.
-                                You can
-                                modify any of this with custom CSS or overriding our default variables. It's also worth
-                                noting that
-                                just about any HTML can go within the <code>.accordion-body</code>, though the
-                                transition does limit
-                                overflow.
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <img class="avatar"
+                                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Crect width='48' height='48' fill='%23dee2e6'/%3E%3C/svg%3E"
+                                                alt="Cliente">
+                                            <div>
+                                                <strong>Carlos Ruiz</strong><br>
+                                                <small class="text-muted">CTO, LogiWare</small>
+                                            </div>
+                                        </div>
+                                        <p class="mb-0 mt-3">“La integración con nuestro ERP redujo tiempos un 50%.”</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Accordion Item #3
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until
-                                the
-                                collapse plugin adds the appropriate classes that we use to style each element. These
-                                classes
-                                control the overall appearance, as well as the showing and hiding via CSS transitions.
-                                You can
-                                modify any of this with custom CSS or overriding our default variables. It's also worth
-                                noting that
-                                just about any HTML can go within the <code>.accordion-body</code>, though the
-                                transition does limit
-                                overflow.
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonios" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonios" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <br><br><br>
+
+    <!-- NOSOTROS -->
+    <section id="nosotros" class="py-6">
+        <div class="container">
+            <div class="text-center section-title">
+                <h2 class="fw-bold">Nosotros</h2>
+                <p class="text-muted">Historia, equipo y valores</p>
+                <div class="bar"></div>
+            </div>
+
+            <div class="row g-4 align-items-start mt-2">
+                <div class="col-lg-6">
+                    <div class="timeline">
+                        <div class="item">
+                            <h6 class="mb-1">2018 — Fundamos InnovaWeb</h6>
+                            <small class="text-muted">Comenzamos con proyectos a medida para pymes.</small>
+                        </div>
+                        <div class="item">
+                            <h6 class="mb-1">2020 — Equipo UX & Data</h6>
+                            <small class="text-muted">Sumamos investigación UX y analítica avanzada.</small>
+                        </div>
+                        <div class="item">
+                            <h6 class="mb-1">2023 — Escalamos a SaaS</h6>
+                            <small class="text-muted">Implementaciones multi-tenant y SLAs 24/7.</small>
+                        </div>
+                    </div>
+                    <ul class="list-group mt-3">
+                        <li class="list-group-item"><i class="bi bi-check2-circle text-primary me-1"></i> Innovación
+                        </li>
+                        <li class="list-group-item"><i class="bi bi-check2-circle text-primary me-1"></i> Transparencia
+                        </li>
+                        <li class="list-group-item"><i class="bi bi-check2-circle text-primary me-1"></i> Calidad</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="card text-center border-0 shadow-sm h-100">
+                                <div class="card-body">
+                                    <i class="bi bi-people icon-xxl text-primary"></i>
+                                    <h6 class="mt-2 mb-0">Equipo</h6>
+                                    <small class="text-muted">Front, Back, UX, Data</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card text-center border-0 shadow-sm h-100">
+                                <div class="card-body">
+                                    <i class="bi bi-cpu icon-xxl text-primary"></i>
+                                    <h6 class="mt-2 mb-0">Tecnología</h6>
+                                    <small class="text-muted">React · Node · Cloud</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card text-center border-0 shadow-sm h-100">
+                                <div class="card-body">
+                                    <i class="bi bi-shield-check icon-xxl text-primary"></i>
+                                    <h6 class="mt-2 mb-0">Seguridad</h6>
+                                    <small class="text-muted">OWASP · IAM · Backups</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card text-center border-0 shadow-sm h-100">
+                                <div class="card-body">
+                                    <i class="bi bi-speedometer2 icon-xxl text-primary"></i>
+                                    <h6 class="mt-2 mb-0">Rendimiento</h6>
+                                    <small class="text-muted">Core Web Vitals</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-primary mt-3" role="alert">
+                        <i class="bi bi-play-circle me-1"></i> Mira nuestro video institucional (placeholder)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br><br><br>
+
+    <!-- BLOG / RECURSOS -->
+    <section id="blog" class="py-6 bg-white">
+        <div class="container">
+            <div class="text-center section-title">
+                <h2 class="fw-bold">Blog & Recursos</h2>
+                <p class="text-muted">Tendencias, guías y buenas prácticas</p>
+                <div class="bar"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 card-hover">
+                        <div class="card-body">
+                            <span class="badge bg-light text-primary mb-2">Guía</span>
+                            <h5>Cómo digitalizar tu empresa en 2025</h5>
+                            <p class="text-muted">Checklist rápido para priorizar inversiones tecnológicas.</p>
+                            <a href="#" class="text-decoration-none">Leer más <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 card-hover">
+                        <div class="card-body">
+                            <span class="badge bg-light text-primary mb-2">Tendencias</span>
+                            <h5>Core Web Vitals: lo que debes medir</h5>
+                            <p class="text-muted">Impacto en SEO y conversión, con tips prácticos.</p>
+                            <a href="#" class="text-decoration-none">Leer más <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 card-hover">
+                        <div class="card-body">
+                            <span class="badge bg-light text-primary mb-2">Caso</span>
+                            <h5>+35% en conversiones tras rediseño</h5>
+                            <p class="text-muted">Caso práctico de e-commerce moda latinoamericano.</p>
+                            <a href="#" class="text-decoration-none">Leer más <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="row mt-4 justify-content-center">
+                <div class="col-lg-8">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                        <input type="email" class="form-control" placeholder="Tu correo para recibir novedades">
+                        <button class="btn btn-primary">Suscribirme</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br><br><br>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-6">
+        <div class="container">
+            <div class="text-center section-title">
+                <h2 class="fw-bold">Contacto</h2>
+                <p class="text-muted">Cuéntanos sobre tu proyecto</p>
+                <div class="bar"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="mb-3">Formulario</h5>
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" placeholder="Tu nombre">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Empresa</label>
+                                    <input type="text" class="form-control" placeholder="Nombre de la empresa">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Correo</label>
+                                    <input type="email" class="form-control" placeholder="tu@email.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Tipo de proyecto</label>
+                                    <select class="form-select">
+                                        <option>Desarrollo Web</option>
+                                        <option>E-commerce</option>
+                                        <option>Aplicación Móvil</option>
+                                        <option>Integraciones / API</option>
+                                        <option>UX/UI Design</option>
+                                        <option>Mantenimiento / Hosting</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Mensaje</label>
+                                    <textarea class="form-control" rows="4"
+                                        placeholder="Cuéntanos los objetivos, plazos y presupuesto estimado"></textarea>
+                                </div>
+                                <button class="btn btn-primary">Enviar</button>
+                                <button type="button" class="btn btn-outline-secondary ms-2" data-bs-toggle="offcanvas"
+                                    data-bs-target="#cotizarCanvas">
+                                    Cotizar rápido
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="mb-3">Información</h5>
+                            <p class="text-muted mb-1"><i class="bi bi-geo-alt me-2"></i>Huila, Colombia (remoto /
+                                híbrido)</p>
+                            <p class="text-muted mb-1"><i class="bi bi-whatsapp me-2"></i>+57 300 000 0000</p>
+                            <p class="text-muted mb-3"><i class="bi bi-envelope me-2"></i>contacto@innovaweb.dev</p>
+
+                            <div class="ratio ratio-16x9 rounded" style="background:#e9ecef;">
+                                <!-- Mapa placeholder -->
+                                <div class="d-flex align-items-center justify-content-center text-muted">Mapa
+                                    (placeholder)</div>
+                            </div>
+
+                            <div class="d-flex gap-3 mt-3">
+                                <a class="btn btn-outline-secondary btn-sm" href="#"><i class="bi bi-linkedin"></i>
+                                    LinkedIn</a>
+                                <a class="btn btn-outline-secondary btn-sm" href="#"><i class="bi bi-github"></i>
+                                    GitHub</a>
+                                <a class="btn btn-outline-secondary btn-sm" href="#"><i class="bi bi-twitter-x"></i>
+                                    X</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <!-- Espacio para centrar-->
+        </div>
+    </section>
+
+    <!-- OFFCANVAS: Solicitar Cotización -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cotizarCanvas">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Cotización rápida</h5>
+            <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <form id="cotizarForm">
+                <div class="mb-3">
+                    <label class="form-label">Tipo de proyecto</label>
+                    <select class="form-select" name="tipo">
+                        <option value="web">Web corporativa</option>
+                        <option value="ecom">E-commerce</option>
+                        <option value="mobile">App móvil</option>
+                        <option value="saas">SaaS / Dashboard</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Complejidad</label>
+                    <select class="form-select" name="nivel">
+                        <option value="baja">Baja</option>
+                        <option value="media">Media</option>
+                        <option value="alta">Alta</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Integraciones necesarias</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="crm" id="int1">
+                        <label class="form-check-label" for="int1">CRM/ERP</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="pago" id="int2">
+                        <label class="form-check-label" for="int2">Pasarela de pago</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="auth" id="int3">
+                        <label class="form-check-label" for="int3">Auth / Roles</label>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary" id="btnCalcular">Calcular estimado</button>
+                <div class="alert alert-info mt-3 d-none" id="resultadoCotizacion"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: Área de Clientes (Login) -->
+    <div class="modal fade" id="loginClientes" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Área de clientes</h5><button class="btn-close"
+                        data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Correo</label>
+                            <input type="email" class="form-control" placeholder="cliente@empresa.com">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" placeholder="••••••••">
+                        </div>
+                        <button class="btn btn-primary w-100">Ingresar</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <small class="text-muted">¿Olvidaste tu contraseña? <a href="#"
+                            class="text-decoration-none">Recupérala</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Simulador de Presupuesto -->
+    <div class="modal fade" id="simuladorModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Simulador de presupuesto</h5><button class="btn-close"
+                        data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="simuladorForm">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label">Tipo</label>
+                                <select class="form-select" name="tipo">
+                                    <option value="web">Web corporativa</option>
+                                    <option value="ecom">E-commerce</option>
+                                    <option value="mobile">App móvil</option>
+                                    <option value="saas">SaaS / Dashboard</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">Páginas/Secciones</label>
+                                <input type="number" min="1" value="5" class="form-control" name="paginas">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">Usuarios/Tráfico (escala)</label>
+                                <select class="form-select" name="escala">
+                                    <option value="baja">Baja</option>
+                                    <option value="media">Media</option>
+                                    <option value="alta">Alta</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="ux" id="optUx" name="ux">
+                                    <label class="form-check-label" for="optUx">Incluye UX Research</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="soporte" id="optSoporte"
+                                        name="soporte">
+                                    <label class="form-check-label" for="optSoporte">Soporte 6 meses</label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="alert alert-secondary mt-3 d-none" id="resultadoSimulador"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button class="btn btn-primary" id="btnSimular">Calcular</button>
+                </div>
             </div>
         </div>
     </div>
 
     <br><br><br>
+
+    <!-- FOOTER -->
+    <footer class="py-5 text-white" style="background:#111827;">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <h5 class="mb-3">InnovaWeb</h5>
+                    <p class="text-secondary">Soluciones de software con enfoque en resultados, seguridad y
+                        escalabilidad.</p>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="text-secondary">Navegación</h6>
+                    <ul class="list-unstyled">
+                        <li><a class="footer-link" href="#servicios">Servicios</a></li>
+                        <li><a class="footer-link" href="#portafolio">Portafolio</a></li>
+                        <li><a class="footer-link" href="#nosotros">Nosotros</a></li>
+                        <li><a class="footer-link" href="#blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <h6 class="text-secondary">Contacto</h6>
+                    <ul class="list-unstyled">
+                        <li class="text-secondary"><i class="bi bi-geo-alt me-2"></i>Huila, CO</li>
+                        <li class="text-secondary"><i class="bi bi-envelope me-2"></i>contacto@innovaweb.dev</li>
+                        <li class="text-secondary"><i class="bi bi-telephone me-2"></i>+57 300 000 0000</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="text-secondary">Síguenos</h6>
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-outline-light btn-sm" href="#"><i class="bi bi-linkedin"></i></a>
+                        <a class="btn btn-outline-light btn-sm" href="#"><i class="bi bi-github"></i></a>
+                        <a class="btn btn-outline-light btn-sm" href="#"><i class="bi bi-twitter-x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary my-4">
+            <div class="d-flex justify-content-between small text-secondary">
+                <span>© <span id="year"></span> InnovaWeb</span>
+                <a class="footer-link" href="#">Política de privacidad</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Año dinámico
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Filtros de portafolio
+        const filterButtons = document.querySelectorAll('[data-filter]');
+        const items = document.querySelectorAll('.portfolio-grid [data-cat]');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const f = btn.dataset.filter;
+                items.forEach(it => {
+                    if (f === 'all' || it.dataset.cat === f) {
+                        it.classList.remove('d-none');
+                    } else {
+                        it.classList.add('d-none');
+                    }
+                });
+            });
+        });
+
+        // Cotización rápida (simple estimador)
+        document.getElementById('btnCalcular')?.addEventListener('click', () => {
+            const form = document.getElementById('cotizarForm');
+            const tipo = form.querySelector('[name="tipo"]').value;
+            const nivel = form.querySelector('[name="nivel"]').value;
+            const ints = Array.from(form.querySelectorAll('input[type="checkbox"]:checked')).map(i => i.value);
+            let base = 0;
+            switch (tipo) {
+                case 'web': base = 1800; break;
+                case 'ecom': base = 2600; break;
+                case 'mobile': base = 3200; break;
+                case 'saas': base = 3800; break;
+            }
+            if (nivel === 'media') base *= 1.35;
+            if (nivel === 'alta') base *= 1.75;
+            if (ints.includes('crm')) base += 600;
+            if (ints.includes('pago')) base += 500;
+            if (ints.includes('auth')) base += 450;
+            const res = document.getElementById('resultadoCotizacion');
+            res.classList.remove('d-none');
+            res.innerHTML = `<strong>Estimado:</strong> USD ${base.toFixed(0)} - ${Math.round(base * 1.25)} (rango)`;
+        });
+
+        // Simulador de presupuesto del Hero
+        document.getElementById('btnSimular')?.addEventListener('click', () => {
+            const f = document.getElementById('simuladorForm');
+            const tipo = f.tipo.value;
+            const paginas = Math.max(parseInt(f.paginas.value || 1, 10), 1);
+            const escala = f.escala.value;
+            const ux = f.ux.checked;
+            const soporte = f.soporte.checked;
+
+            let base = { web: 1500, ecom: 2400, mobile: 3000, saas: 3600 }[tipo] || 1500;
+            base += (paginas - 5) * 120; // extra por página adicional
+
+            if (escala === 'media') base *= 1.3;
+            if (escala === 'alta') base *= 1.6;
+            if (ux) base += 500;
+            if (soporte) base += 400;
+
+            const res = document.getElementById('resultadoSimulador');
+            res.classList.remove('d-none');
+            res.textContent = `Estimado: USD ${Math.round(base)} (aprox.)`;
+        });
+    </script>
 </body>
 
 </html>
